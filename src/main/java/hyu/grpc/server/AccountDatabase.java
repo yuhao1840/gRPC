@@ -17,9 +17,9 @@ public class AccountDatabase {
   private static final Map<Integer, Integer> MAP = IntStream.rangeClosed(1, 1000).boxed().collect(Collectors.toMap(Function.identity(), v -> v * 10));
 
   public static Integer getBalance(int accountId) {
-    System.out.println("AccountDatabase.getBalance()..............................accountId=" + accountId);
+    // System.out.println("AccountDatabase.getBalance()..............................accountId=" + accountId);
     if (accountId < 1 || accountId > 1000) {
-      System.out.println("Invalid accountId. Must be in range of 1 to 1000.");
+      // System.out.println("Invalid accountId. Must be in range of 1 to 1000.");
       return 0;
     }
     return MAP.get(accountId);

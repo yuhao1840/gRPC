@@ -5,6 +5,7 @@ import hyu.grpc.models.BalanceCheckRequest;
 import hyu.grpc.models.BankServiceGrpc;
 import hyu.grpc.models.Money;
 import hyu.grpc.models.WithdrawRequest;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 public class BankService extends BankServiceGrpc.BankServiceImplBase {
@@ -37,8 +38,10 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     int currentBalance = AccountDatabase.getBalance(accountNumber);
     System.out.println("currentBalance=" + currentBalance);
     if (currentBalance < withdrawAmount) {
-      System.out.println("Not enough balance");
-      responseObserver.onError(new Exception("Not enough balance"));
+      String errMsg = "Not enough balance. You have only $" + currentBalance + " in your account.";
+      System.out.println(errMsg);
+      Status status = Status.FAILED_PRECONDITION.withDescription(errMsg);
+      responseObserver.onError(status.asException());
       return;
     }
 
