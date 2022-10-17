@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.protobuf.Int32Value;
+//import com.google.protobuf.Int32Value;
 import hyu.grpc.json.JPerson;
 import hyu.grpc.models.Person;
 
@@ -32,7 +32,8 @@ public class PerformanceTest {
     };
 
     // protobuf
-    Person sam = Person.newBuilder().setName("sam").setAge(Int32Value.newBuilder().setValue(25).build()).build();
+    // Person sam = Person.newBuilder().setName("sam").setAge(Int32Value.newBuilder().setValue(25).build()).build();
+    Person sam = Person.newBuilder().setName("sam").setAge(25).build();
     path = Paths.get("sam.pb");
     Files.write(path, sam.toByteArray());
     Runnable proto = () -> {

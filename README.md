@@ -1,10 +1,12 @@
-# How to build clients of multiple types
+# How to compile proto file into multiple programming languages
 
-## in Windows PowerShell
->cd C:\git\hyu\gRPC\src\main\proto
+## go to proto source files folder in Windows PowerShell
+>cd %PROJECT_ROOT%\src\main\proto
 
-## compile JS file from proto file
+## compile a proto file to JS
 >../../../target/protoc-plugins/protoc-3.4.0-windows-x86_64.exe --js_out=./ person.proto
 
-## compile python file from proto file
+## compile a proto file to Python
 >../../../target/protoc-plugins/protoc-3.4.0-windows-x86_64.exe --python_out=./ person.proto
+
+# src/main/node-client is a NodeJS-based client to gRPC Bank Service
