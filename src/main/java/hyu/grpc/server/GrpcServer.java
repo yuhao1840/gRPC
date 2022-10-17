@@ -9,6 +9,7 @@ public class GrpcServer {
     try {
       Server server = ServerBuilder.forPort(6565).addService(new BankService()).build();
       server.start();
+      System.out.println("GrpcServer started........................................");
       server.awaitTermination();
     }
     catch (Exception e) {

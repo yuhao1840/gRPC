@@ -1,3 +1,5 @@
+# Recommended Eclipse Plug-In: Protocol Buffer Editor
+
 # How to compile proto file into multiple programming languages
 
 ## go to proto source files folder in Windows PowerShell
