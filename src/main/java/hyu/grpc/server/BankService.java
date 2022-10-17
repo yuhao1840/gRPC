@@ -12,7 +12,9 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     System.out.println("BankService.getBalance()..............................");
     int accountNumber = request.getAccountNumber();
     System.out.println("accountNumber=" + accountNumber);
-    Balance balance = Balance.newBuilder().setAmount(accountNumber * 10).build();
+    int amount = AccountDatabase.getBalance(accountNumber);
+    System.out.println("amount=" + amount);
+    Balance balance = Balance.newBuilder().setAmount(amount).build();
     System.out.println("balance=" + balance.getAmount());
     responseObserver.onNext(balance);
     responseObserver.onCompleted();
