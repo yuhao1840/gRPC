@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "hyu.grpc.models";
+
+// v1
+//message Television {
+//	string brand = 1;
+//	int32 year = 2;
+//}
+
+// v2
+//message Television {
+//	string brand = 1;
+//	int32 model = 2;
+//	Type type = 3;
+//}
+
+// v3
+message Television {
+	string brand = 1;
+
+//	int32 model = 2;
+	reserved 2;
+	reserved "year", "model";
+
+//	reserved 3 to 4;
+//	reserved "type", "price";
+	Type type = 3;
+	int32 price = 4;
+}
+
+enum Type {
+	HD = 0;
+	UHD = 1;
+	OLED = 2;
+}

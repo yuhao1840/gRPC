@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "hyu.grpc.models";
+
+// request object
+message BalanceCheckRequest {
+	int32 account_number = 1;
+}
+
+// response object
+message Balance {
+	// USD
+	int32 amount = 1;
+}
+
+// service
+service BankService {
+	rpc getBalance(BalanceCheckRequest) returns (Balance);
+}
