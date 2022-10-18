@@ -28,8 +28,8 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
 
   // withdraw money in stream of $10
   @Override
-  public void withdraow(WithdrawRequest request, StreamObserver<Money> responseObserver) {
-    System.out.println("BankService.withdraow()..............................");
+  public void withdraw(WithdrawRequest request, StreamObserver<Money> responseObserver) {
+    System.out.println("BankService.withdrow()..............................");
     int accountNumber = request.getAccountNumber();
     System.out.println("accountNumber=" + accountNumber);
     int withdrawAmount = request.getAmount();

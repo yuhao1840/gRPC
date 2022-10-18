@@ -33,7 +33,7 @@ service BankService {
 	rpc getBalance(BalanceCheckRequest) returns (Balance);
 
 	// server-side streaming
-	rpc withdraow(WithdrawRequest) returns (stream Money);
+	rpc withdraw(WithdrawRequest) returns (stream Money);
 
 	// client-side streaming
 	// TO BE DONE ...
