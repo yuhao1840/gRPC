@@ -10,6 +10,9 @@ import io.grpc.stub.StreamObserver;
 
 public class BankService extends BankServiceGrpc.BankServiceImplBase {
 
+  // unary gRPC method (according to definition in bank-sevice.proto)
+  //
+  // get balance of bank account
   @Override
   public void getBalance(BalanceCheckRequest request, StreamObserver<Balance> responseObserver) {
     System.out.println("BankService.getBalance()..............................");
@@ -23,9 +26,12 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     System.out.println("balance=" + balance.getAmount());
 
     responseObserver.onNext(balance);
+
     responseObserver.onCompleted();
   }
 
+  // server-side streaming gRPC method (according to definition in bank-sevice.proto)
+  //
   // withdraw money in stream of $10
   @Override
   public void withdraw(WithdrawRequest request, StreamObserver<Money> responseObserver) {
