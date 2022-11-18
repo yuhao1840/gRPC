@@ -36,7 +36,7 @@ public class BankClientTest {
   public void withdrawTest() {
     int acocuntNumber = 123;
     WithdrawRequest withdrawRequest = WithdrawRequest.newBuilder().setAccountNumber(acocuntNumber).setAmount(76).build();
-    this.blockingStub.withdraw(withdrawRequest).forEachRemaining(money -> System.out.println("Received money: " + money.getValue()));
+    this.blockingStub.withdraw(withdrawRequest).forEachRemaining(money -> System.out.println("BankClientTest.withdrawTest() >> Received money: " + money.getValue()));
   }
 
   @Test

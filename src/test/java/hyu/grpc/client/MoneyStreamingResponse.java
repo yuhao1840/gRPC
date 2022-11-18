@@ -14,19 +14,19 @@ public class MoneyStreamingResponse implements StreamObserver<Money> {
 
   @Override
   public void onCompleted() {
-    System.out.println("Receive Money Stream Finished");
+    System.out.println("MoneyStreamingResponse.onCompleted() >> Receive Money Stream Finished");
     latch.countDown();
   }
 
   @Override
   public void onError(Throwable throwable) {
-    System.out.println(throwable.getMessage());
+    System.out.println("MoneyStreamingResponse.onError() >> " + throwable.getMessage());
     latch.countDown();
   }
 
   @Override
   public void onNext(Money money) {
-    System.out.println("Received async money: $" + money.getValue());
+    System.out.println("MoneyStreamingResponse.onNext() >> Received async money: $" + money.getValue());
   }
 
 }

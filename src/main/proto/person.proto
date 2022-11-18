@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "common/car.proto";
+import "common/address.proto";
+
+option java_multiple_files = true;
+option java_package = "hyu.grpc.models";
+
+message Person {
+	string name = 1;
+	int32 age = 2;
+	repeated common.Car car = 3;
+	common.Address address = 4;
+}
