@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "hyu.grpc.models";
+
+// request object
+message BalanceCheckRequest {
+	int32 account_number = 1;
+}
+
+// response object
+message Balance {
+	// USD
+	int32 amount = 1;
+}
+
+// request object
+message WithdrawRequest {
+	int32 account_number = 1;
+	int32 amount = 2;
+}
+
+// response object
+message Money {
+	// USD
+	int32 value = 1;
+}
+
+// service
+service BankService {
+
+	// unary
+	rpc getBalance(BalanceCheckRequest) returns (Balance);
+
+	// server-side streaming
+	rpc withdraw(WithdrawRequest) returns (stream Money);
+
+	// client-side streaming
+	// TO BE DONE ...
+
+	// bidirectional streaming
+	// TO  BE DONE ...
+
+}
