@@ -26,6 +26,11 @@ message Money {
 	int32 value = 1;
 }
 
+message DepositRequest {
+	int32 account_number = 1;
+	int32 amount = 2;
+}
+
 // service
 service BankService {
 
@@ -36,7 +41,7 @@ service BankService {
 	rpc withdraw(WithdrawRequest) returns (stream Money);
 
 	// client-side streaming
-	// TO BE DONE ...
+	rpc cashDepost(stream DepositRequest) returns (Balance);
 
 	// bidirectional streaming
 	// TO  BE DONE ...

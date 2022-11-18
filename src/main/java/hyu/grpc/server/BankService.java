@@ -3,6 +3,7 @@ package hyu.grpc.server;
 import hyu.grpc.models.Balance;
 import hyu.grpc.models.BalanceCheckRequest;
 import hyu.grpc.models.BankServiceGrpc;
+import hyu.grpc.models.DepositRequest;
 import hyu.grpc.models.Money;
 import hyu.grpc.models.WithdrawRequest;
 import io.grpc.Status;
@@ -79,6 +80,14 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
 
     responseObserver.onCompleted();
     System.out.println("BankService.withdraow() completed");
+  }
+
+  // client-side streaming gRPC method (according to definition in bank-sevice.proto)
+  //
+  // deposit money in stream
+  @Override
+  public StreamObserver<DepositRequest> cashDepost(StreamObserver<Balance> responseObserver) {
+    return super.cashDepost(responseObserver);
   }
 
 }
