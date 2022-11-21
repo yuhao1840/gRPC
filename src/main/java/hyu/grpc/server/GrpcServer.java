@@ -7,7 +7,8 @@ public class GrpcServer {
 
   public static void main(String[] args) {
     try {
-      Server server = ServerBuilder.forPort(6565).addService(new BankService()).build();
+      Server server = ServerBuilder.forPort(6565).addService(new BankService()).addService(new TransferService()).build();
+
       server.start();
       System.out.println("GrpcServer started........................................");
       server.awaitTermination();

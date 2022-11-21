@@ -7,9 +7,11 @@ import org.junit.jupiter.api.TestInstance;
 import hyu.grpc.models.Balance;
 import hyu.grpc.models.BalanceCheckRequest;
 import hyu.grpc.models.BankServiceGrpc;
+import hyu.grpc.models.DepositRequest;
 import hyu.grpc.models.WithdrawRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.StreamObserver;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BankClientTest {
@@ -46,7 +48,18 @@ public class BankClientTest {
     WithdrawRequest withdrawRequest = WithdrawRequest.newBuilder().setAccountNumber(acocuntNumber).setAmount(76).build();
     this.nonBlockingStub.withdraw(withdrawRequest, new MoneyStreamingResponse(latch));
     latch.await();
-    // Uninterruptibles.sleepUninterruptibly(20, TimeUnit.SECONDS);
+  }
+
+  @Test
+  public void cashStreamingRequest() throws InterruptedException {
+    CountDownLatch latch = new CountDownLatch(1);
+    StreamObserver<DepositRequest> streamObserver = this.nonBlockingStub.cashDepost(new BalanceStreamObserver(latch));
+    for (int i = 0; i < 10; i++) {
+      DepositRequest depositRequest = DepositRequest.newBuilder().setAccountNumber(8).setAmount(10).build();
+      streamObserver.onNext(depositRequest);
+    }
+    streamObserver.onCompleted();
+    latch.await();
   }
 
 }

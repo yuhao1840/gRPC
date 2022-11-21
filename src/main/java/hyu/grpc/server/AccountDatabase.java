@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
  */
 public class AccountDatabase {
 
-  private static final Map<Integer, Integer> MAP = IntStream.rangeClosed(1, 1000).boxed().collect(Collectors.toMap(Function.identity(), v -> v * 10));
+  private static final Map<Integer, Integer> MAP = IntStream.rangeClosed(1, 1000).boxed().collect(Collectors.toMap(Function.identity(), v -> 100));
 
   public static Integer getBalance(int accountId) {
     // System.out.println("AccountDatabase.getBalance()..............................accountId=" + accountId);
@@ -33,4 +33,7 @@ public class AccountDatabase {
     return MAP.computeIfPresent(accountId, (k, v) -> v - amount);
   }
 
+  public static void printAccountDetails() {
+    System.out.println(MAP);
+  }
 }

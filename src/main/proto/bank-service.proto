@@ -43,7 +43,4 @@ service BankService {
 	// client-side streaming
 	rpc cashDepost(stream DepositRequest) returns (Balance);
 
-	// bidirectional streaming
-	// TO  BE DONE ...
-
 }
