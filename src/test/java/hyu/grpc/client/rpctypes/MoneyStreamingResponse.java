@@ -1,4 +1,4 @@
-package hyu.grpc.client;
+package hyu.grpc.client.rpctypes;
 
 import java.util.concurrent.CountDownLatch;
 import hyu.grpc.models.Money;

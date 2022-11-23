@@ -1,4 +1,4 @@
-package hyu.grpc.server;
+package hyu.grpc.server.rpctypes;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;

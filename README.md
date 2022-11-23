@@ -12,3 +12,9 @@
 >../../../target/protoc-plugins/protoc-3.4.0-windows-x86_64.exe --python_out=./ person.proto
 
 # src/main/node-client is a NodeJS-based client to gRPC Bank Service
+
+# setup Nginx using docker-compose
+https://dev.to/aminnairi/quick-web-server-with-nginx-on-docker-compose-43ol
+$ cd nginx
+$ docker-compose up --detach
+$ docker-compose stop

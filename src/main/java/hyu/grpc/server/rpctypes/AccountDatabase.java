@@ -1,4 +1,4 @@
-package hyu.grpc.server;
+package hyu.grpc.server.rpctypes;
 
 import java.util.Map;
 import java.util.function.Function;

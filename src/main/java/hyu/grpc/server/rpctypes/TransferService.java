@@ -1,4 +1,4 @@
-package hyu.grpc.server;
+package hyu.grpc.server.rpctypes;
 
 import hyu.grpc.models.TransferRequest;
 import hyu.grpc.models.TransferResponse;
