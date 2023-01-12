@@ -18,12 +18,14 @@ public class TransferClientTest {
 
   @BeforeAll
   public void setup() {
+    System.out.println("setup()................................");
     ManagedChannel localhost = ManagedChannelBuilder.forAddress("localhost", 6565).usePlaintext().build();
     this.nonBlockingStub = TransferServiceGrpc.newStub(localhost);
   }
 
   @Test
   public void transfer() throws InterruptedException {
+    System.out.println("transfer()................................");
     CountDownLatch latch = new CountDownLatch(1);
     TransferStreamingResponse response = new TransferStreamingResponse(latch);
     StreamObserver<TransferRequest> requestStreamObserver = this.nonBlockingStub.transfer(response);

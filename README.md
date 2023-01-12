@@ -1,5 +1,11 @@
 # Recommended Eclipse Plug-In: Protocol Buffer Editor
 
+# Eclipse Project Setup
+make sure to add the following folders onto the project's Java build path
+/src/main/proto 
+/target/generated-sources/protobuf/grpc-java
+/target/generated-sources/protobuf/java
+
 # How to compile proto file into multiple programming languages
 
 ## go to proto source files folder in Windows PowerShell

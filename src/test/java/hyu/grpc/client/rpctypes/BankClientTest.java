@@ -21,13 +21,17 @@ public class BankClientTest {
 
   @BeforeAll
   public void setup() {
+    System.out.println("setup()................................");
     ManagedChannel localhost = ManagedChannelBuilder.forAddress("localhost", 6565).usePlaintext().build();
+    System.out.println("Channel is created");
     this.blockingStub = BankServiceGrpc.newBlockingStub(localhost);
     this.nonBlockingStub = BankServiceGrpc.newStub(localhost);
+    System.out.println("Stubs are created");
   }
 
   @Test
   public void balanceTest() {
+    System.out.println("balanceTest()................................");
     int acocuntNumber = 123;
     BalanceCheckRequest balanceCheckRequest = BalanceCheckRequest.newBuilder().setAccountNumber(acocuntNumber).build();
     Balance balance = this.blockingStub.getBalance(balanceCheckRequest);
